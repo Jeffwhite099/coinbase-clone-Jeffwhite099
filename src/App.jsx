@@ -14,11 +14,10 @@ import ScrollToTop from "./components/common/ScrollToTop";
 function App() {
   return (
     <BrowserRouter>
-
-    <WarningBanner /> 
+       <WarningBanner /> 
       
-    <ScrollToTop />
-    <Routes>
+       <ScrollToTop />
+       <Routes>
 
         {/* Pages with Navbar + Footer */}
         <Route element={<Layout />}>
