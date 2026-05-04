@@ -1,26 +1,90 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import AuthLayout from "../components/auth/AuthLayout";
 import AuthInput from "../components/auth/AuthInput";
 import AuthSocialButtons from "../components/auth/AuthSocialButtons";
 import Button from "../components/ui/Button";
 
 function SignUp() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
+  const location = useLocation();
+  const accountType = new URLSearchParams(location.search).get("type") || "personal";
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError("");
+    setLoading(true);
+
+    try {
+      const response = await fetch("/api/auth/signup", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name,
+          email,
+          accountType,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.message || "Registration failed");
+      }
+
+      localStorage.setItem("token", data.token);
+      navigate("/");
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <AuthLayout 
       title="Create your account" 
       description="Access all that Coinbase has to offer with a single account."
     >
-      <AuthInput 
-        label="Email"
-        placeholder="Your email address"
-      />
+      <form onSubmit={handleSubmit}>
+        <AuthInput 
+          label="Name"
+          placeholder="Your full name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          required
+        />
 
-      <Button variant="primary" size="auth" className="mt-7 bg-[#86a7eb]">
-        Continue
-      </Button>
+        <AuthInput 
+          label="Email"
+          type="email"
+          placeholder="Your email address"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
 
-      {/* OR */}
+        {error && (
+          <div className="mt-4 text-[14px] text-red-500">{error}</div>
+        )}
+
+        <Button 
+          variant="primary" 
+          size="auth" 
+          className="mt-7 bg-[#86a7eb]"
+          type="submit"
+          disabled={loading}
+        >
+          {loading ? "Creating account..." : "Continue"}
+        </Button>
+      </form>
+
       <div className="my-7 flex items-center gap-4">
         <div className="h-px flex-1 bg-[#e5e7eb]" />
         <span className="text-[14px] text-[#6b7280]">OR</span>
@@ -29,7 +93,6 @@ function SignUp() {
 
       <AuthSocialButtons mode="signup" />
 
-      {/* Sign in link */}
       <p className="mt-8 text-center text-[16px] font-semibold text-black">
         Already have an account?{" "}
         <Link to="/signin" className="text-[#1652f0]">
@@ -37,7 +100,6 @@ function SignUp() {
         </Link>
       </p>
 
-      {/* Footer text */}
       <p className="mx-auto mt-8 max-w-[380px] text-center text-[14px] leading-[1.45] text-[#6b7280]">
         By creating an account you certify that you are over the
         age of 18 and agree to our{" "}
