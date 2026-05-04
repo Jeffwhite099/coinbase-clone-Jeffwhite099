@@ -13,9 +13,15 @@ const styles = {
     backgroundColor: "#ffcc00",
     color: "#000",
     textAlign: "center",
-    padding: "10px",
-    fontWeight: "bold",
-    fontSize: "14px",
+    padding: "10px 20px",
+    fontWeight: "600",
+    fontSize: "13px",
+    position: "fixed",
+    top: 0,
+    left: 0,
+    right: 0,
+    zIndex: 9999,
+    boxShadow: "0 2px 4px rgba(0,0,0,0.1)",
   },
 };
 
