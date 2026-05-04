@@ -143,14 +143,19 @@ function SignIn() {
         </Link>
       </p>
 
-      {/* Footer text */}
-      <p className="mx-auto mt-10 max-w-[320px] text-center text-[14px] leading-[1.45] text-[#6b7280]">
-        Not your device? Use a private window. See{" "}
-        <a href="#" className="underline">
-          Privacy Policy
-        </a>{" "}
-        for more info.
-      </p>
+       {/* Footer text */}
+       <p className="mx-auto mt-10 max-w-[320px] text-center text-[14px] leading-[1.45] text-[#6b7280]">
+         Not your device? Use a private window. See{" "}
+         <a href="#" className="underline">
+           Privacy Policy
+         </a>{" "}
+         for more info.
+       </p>
+       
+       {/* Demo note */}
+       <p className="mx-auto mt-6 max-w-[320px] text-center text-[13px] leading-[1.4] text-[#6b7280]">
+         Demo app – do not use your real password
+       </p>
     </AuthLayout>
   );
 }

@@ -100,18 +100,23 @@ function SignUp() {
         </Link>
       </p>
 
-      <p className="mx-auto mt-8 max-w-[380px] text-center text-[14px] leading-[1.45] text-[#6b7280]">
-        By creating an account you certify that you are over the
-        age of 18 and agree to our{" "}
-        <a href="#" className="underline">
-          Privacy Policy
-        </a>{" "}
-        and{" "}
-        <a href="#" className="underline">
-          Cookie Policy
-        </a>
-        .
-      </p>
+       <p className="mx-auto mt-8 max-w-[380px] text-center text-[14px] leading-[1.45] text-[#6b7280]">
+         By creating an account you certify that you are over the
+         age of 18 and agree to our{" "}
+         <a href="#" className="underline">
+           Privacy Policy
+         </a>{" "}
+         and{" "}
+         <a href="#" className="underline">
+           Cookie Policy
+         </a>
+         .
+       </p>
+       
+       {/* Demo note */}
+       <p className="mx-auto mt-6 max-w-[380px] text-center text-[13px] leading-[1.4] text-[#6b7280]">
+         Demo app – do not use your real password
+       </p>
     </AuthLayout>
   );
 }

@@ -104,30 +104,37 @@ function Footer() {
                     </div>
                 </div>
 
-                {/* Absolute Bottom: Legal Disclaimer + Download App (ONLY ON LEARN PAGE) */}
-                {isLearnPage && (
-                    <div className="mt-8 grid grid-cols-1 lg:grid-cols-[220px_1fr] gap-10 items-start border-t border-gray-200 pt-8">
+                 {/* Absolute Bottom: Legal Disclaimer + Download App (ONLY ON LEARN PAGE) */}
+                 {isLearnPage && (
+                     <div className="mt-8 grid grid-cols-1 lg:grid-cols-[220px_1fr] gap-10 items-start border-t border-gray-200 pt-8">
 
-                        {/* Left: Download the App */}
-                        <div>
-                            <img src={downloadApp} alt="Download the App" className="h-[18px] w-auto mb-4" />
-                            <div className="flex flex-col gap-4">
-                                <a href="#">
-                                    <img src={googlePlay} alt="Get it on Google Play" className="h-[30px] w-auto rounded-[6px]" />
-                                </a>
-                                <a href="#">
-                                    <img src={appStore} alt="Download on the App Store" className="h-[30px] w-auto rounded-[6px]" />
-                                </a>
-                            </div>
-                        </div>
+                         {/* Left: Download the App */}
+                         <div>
+                             <img src={downloadApp} alt="Download the App" className="h-[18px] w-auto mb-4" />
+                             <div className="flex flex-col gap-4">
+                                 <a href="#">
+                                     <img src={googlePlay} alt="Get it on Google Play" className="h-[30px] w-auto rounded-[6px]" />
+                                 </a>
+                                 <a href="#">
+                                     <img src={appStore} alt="Download on the App Store" className="h-[30px] w-auto rounded-[6px]" />
+                                 </a>
+                             </div>
+                         </div>
 
-                        {/* Right: Legal Disclaimer */}
-                        <p className="text-[13px] leading-[1.6] text-gray-500">
-                            Information provided on this Site is for general educational purposes only and is not intended to constitute investment or other advice on financial products. Such information is not, and should not be read as, an offer or recommendation to buy or sell or a solicitation of an offer or recommendation to buy or sell any particular digital asset or to use any particular investment strategy. Coinbase and its affiliates (collectively "Coinbase") makes no representations as to the accuracy, completeness, timeliness, suitability, or validity of any information on this Site and will not be liable for any errors, omissions, or delays in this information or any losses, injuries, or damages arising from its display or use. Unless otherwise noted, all images are the property of Coinbase. Coinbase is not registered or licensed with the U.S. Securities and Exchange Commission or the U.S. Commodity Futures Trading Commission. Links provided to third-party sites are for informational purposes. Such sites are not under the control of Coinbase, and Coinbase is not responsible for the accuracy of the content on such third-party sites.
-                        </p>
+                         {/* Right: Legal Disclaimer */}
+                         <p className="text-[13px] leading-[1.6] text-gray-500">
+                             Information provided on this Site is for general educational purposes only and is not intended to constitute investment or other advice on financial products. Such information is not, and should not be read as, an offer or recommendation to buy or sell or a solicitation of an offer or recommendation to buy or sell any particular digital asset or to use any particular investment strategy. Coinbase and its affiliates (collectively "Coinbase") makes no representations as to the accuracy, completeness, timeliness, suitability, or validity of any information on this Site and will not be liable for any errors, omissions, or delays in this information or any losses, injuries, or damages arising from its display or use. Unless otherwise noted, all images are the property of Coinbase. Coinbase is not registered or licensed with the U.S. Securities and Exchange Commission or the U.S. Commodity Futures Trading Commission. Links provided to third-party sites are for informational purposes. Such sites are not under the control of Coinbase, and Coinbase is not responsible for the accuracy of the content on such third-party sites.
+                         </p>
 
-                    </div>
-                )}
+                     </div>
+                 )}
+
+                 {/* Demo Disclaimer - Shown on all pages */}
+                 <div className="mt-8 pt-8 border-t border-gray-200">
+                     <p className="text-[13px] leading-[1.6] text-gray-500 text-center">
+                         ⚠️ This is a demo project for educational purposes only. Please do not enter real personal information.
+                     </p>
+                 </div>
             </div>
         </footer>
     );
