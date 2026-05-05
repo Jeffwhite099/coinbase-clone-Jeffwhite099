@@ -69,7 +69,7 @@ const options = {
       { name: 'Health', description: 'Health check endpoint' },
     ],
   },
-  apis: ['server/routes/*.js', 'server/server.js'],
+  apis: ['./routes/*.js', './server.js'],
 };
 
 const specs = swaggerJsdoc(options);
