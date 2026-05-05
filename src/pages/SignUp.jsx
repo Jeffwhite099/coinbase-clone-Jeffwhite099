@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useNavigate, useLocation } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import AuthLayout from "../components/auth/AuthLayout";
 import AuthInput from "../components/auth/AuthInput";
 import AuthSocialButtons from "../components/auth/AuthSocialButtons";
@@ -12,8 +12,6 @@ function SignUp() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const navigate = useNavigate();
-  const location = useLocation();
-  const accountType = new URLSearchParams(location.search).get("type") || "personal";
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -21,7 +19,7 @@ function SignUp() {
     setLoading(true);
 
     try {
-      const response = await fetch("http://localhost:5000/auth/register",  {
+      const response = await fetch("/auth/register",  {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -39,8 +37,7 @@ function SignUp() {
         throw new Error(data.message || "Registration failed");
       }
 
-      localStorage.setItem("token", data.token);
-      navigate("/");
+      navigate("/signin");
     } catch (err) {
       setError(err.message);
     } finally {
@@ -56,6 +53,7 @@ function SignUp() {
       <form onSubmit={handleSubmit}>
         <AuthInput 
           label="Name"
+          type="text"
           placeholder="Your full name"
           value={name}
           onChange={(e) => setName(e.target.value)}

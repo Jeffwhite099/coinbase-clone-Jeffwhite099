@@ -3,14 +3,14 @@ import { useState, useEffect } from "react";
 function MarketCard() {
   const [activeTab, setActiveTab] = useState("new");
   const [coinsData, setCoinsData] = useState({
-    tradable: [],
+    all: [],
     gainers: [],
     new: []
   });
   const [loading, setLoading] = useState(true);
 
   const tabs = [
-    { id: "tradable", label: "Tradable" },
+    { id: "all", label: "All crypto" },
     { id: "gainers", label: "Top gainers" },
     { id: "new", label: "New on Coinbase" },
   ];
@@ -30,18 +30,31 @@ function MarketCard() {
         const newData = await newRes.json();
 
         // Helper to format backend data
-const formatCoins = (coins) => {
-           return coins.map(coin => ({
-             name: coin.name,
-             symbol: coin.symbol,
-             price: `GHS ${coin.price.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`,
-             change: coin.change24h === 0 ? "--" : (coin.change24h > 0 ? `↗ ${coin.change24h}%` : `↙ ${Math.abs(coin.change24h)}%`),
-             logo: coin.image || coin.logo // backend uses image, frontend uses logo
-           }));
-         };
+        const formatCoins = (coins) => {
+          return coins.map((coin) => {
+            const price = Number(coin.price ?? 0);
+            const change24h = Number(coin.change24h ?? 0);
+
+            return {
+              name: coin.name,
+              symbol: coin.symbol,
+              price: `GHS ${price.toLocaleString(undefined, {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2,
+              })}`,
+              change:
+                change24h === 0
+                  ? "--"
+                  : change24h > 0
+                  ? `↗ ${change24h}%`
+                  : `↙ ${Math.abs(change24h)}%`,
+              logo: coin.image || coin.logo,
+            };
+          });
+        };
 
         setCoinsData({
-          tradable: tradableData.success ? formatCoins(tradableData.data).slice(0, 6) : [],
+          all: tradableData.success ? formatCoins(tradableData.data).slice(0, 6) : [],
           gainers: gainersData.success ? formatCoins(gainersData.data).slice(0, 6) : [],
           new: newData.success ? formatCoins(newData.data).slice(0, 6) : []
         });

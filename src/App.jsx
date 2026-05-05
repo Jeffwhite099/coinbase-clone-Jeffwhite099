@@ -9,7 +9,6 @@ import Learn from "./pages/Learn";
 import Profile from "./pages/Profile";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
-import SignUpType from "./pages/SignUpType";
 import ScrollToTop from "./components/common/ScrollToTop";
 
 function App() {
@@ -32,7 +31,7 @@ function App() {
 
           {/* Auth pages WITHOUT layout */}
           <Route path="/signin" element={<SignIn />} />
-          <Route path="/signup" element={<SignUpType />} />
+          <Route path="/signup" element={<SignUp />} />
           <Route path="/signup/details" element={<SignUp />} />
         </Routes>
       </div>

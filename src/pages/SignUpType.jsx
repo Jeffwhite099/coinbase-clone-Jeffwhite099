@@ -16,7 +16,7 @@ function SignUpType() {
   }, []);
 
   const handleSelectType = (type) => {
-    navigate(`/signup?type=${type}`);
+    navigate(`/signup/details?type=${type}`);
   };
 
   const options = [

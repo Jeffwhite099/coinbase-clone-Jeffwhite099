@@ -9,6 +9,7 @@ import appStore from "../../assets/images/app-store.png";
 import { Globe } from "lucide-react";
 import { useLocation } from "react-router-dom";
 import { footerColumns } from "../../data/footerData";
+import FooterDisclaimer from "./FooterDisclaimer";
 
 function FooterSection({ title, links }) {
     return (
@@ -129,12 +130,8 @@ function Footer() {
                      </div>
                  )}
 
-                 {/* Demo Disclaimer - Shown on all pages */}
-                 <div className="mt-8 pt-8 border-t border-gray-200">
-                     <p className="text-[13px] leading-[1.6] text-gray-500 text-center">
-                         ⚠️ This is a demo project for educational purposes only. Please do not enter real personal information.
-                     </p>
-                 </div>
+                {/* Demo Disclaimer - Shown on all pages */}
+                <FooterDisclaimer />
             </div>
         </footer>
     );

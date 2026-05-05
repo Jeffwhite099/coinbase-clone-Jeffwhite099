@@ -1,6 +1,6 @@
 import React from 'react';
 
-const AuthInput = ({ label, type = "email", placeholder, className = "", ...props }) => {
+const AuthInput = ({ label, type = "text", placeholder, className = "", ...props }) => {
   return (
     <div className={`mt-8 ${className}`}>
       <label className="mb-3 block text-[16px] font-semibold text-black">
