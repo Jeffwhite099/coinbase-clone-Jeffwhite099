@@ -13,7 +13,8 @@ router.get('/', async (req, res) => {
       symbol: coin.symbol,
       price: coin.price,
       image: coin.logo,
-      change24h: coin.change_24h
+      change24h: coin.change_24h,
+      createdAt: coin.updated_at
     }));
     res.json({ success: true, count: formatted.length, data: formatted });
   } catch (error) {
@@ -32,7 +33,8 @@ router.get('/gainers', async (req, res) => {
       symbol: coin.symbol,
       price: coin.price,
       image: coin.logo,
-      change24h: coin.change_24h
+      change24h: coin.change_24h,
+      createdAt: coin.updated_at
     }));
     res.json({ success: true, count: formatted.length, data: formatted });
   } catch (error) {
@@ -51,7 +53,8 @@ router.get('/new', async (req, res) => {
       symbol: coin.symbol,
       price: coin.price,
       image: coin.logo,
-      change24h: coin.change_24h
+      change24h: coin.change_24h,
+      createdAt: coin.updated_at
     }));
     res.json({ success: true, count: formatted.length, data: formatted });
   } catch (error) {
@@ -70,7 +73,8 @@ router.get('/tradable', async (req, res) => {
       symbol: coin.symbol,
       price: coin.price,
       image: coin.logo,
-      change24h: coin.change_24h
+      change24h: coin.change_24h,
+      createdAt: coin.updated_at
     }));
     res.json({ success: true, data: formatted });
   } catch (error) {

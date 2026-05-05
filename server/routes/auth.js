@@ -100,7 +100,10 @@ router.get('/profile', async (req, res) => {
 
     const decoded = jwt.verify(token, process.env.JWT_SECRET || 'your-secret-key');
     const db = getDb();
-    const user = await db.get('SELECT id, email, name, createdAt FROM users WHERE id = ?', [decoded.id]);
+    const user = await db.get(
+      'SELECT id, email, name, created_at AS createdAt FROM users WHERE id = ?',
+      [decoded.id]
+    );
 
     if (!user) {
       return res.status(404).json({ success: false, message: 'User not found' });

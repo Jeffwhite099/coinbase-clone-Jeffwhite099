@@ -12,7 +12,7 @@ export async function initializeDatabase() {
     });
 
     // Create users table
-    await db.exec(
+    await db.exec(`
       CREATE TABLE IF NOT EXISTS users (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         email TEXT UNIQUE NOT NULL,
@@ -20,10 +20,10 @@ export async function initializeDatabase() {
         name TEXT,
         created_at DATETIME DEFAULT CURRENT_TIMESTAMP
       )
-    );
+    `);
 
     // Create crypto_data table
-    await db.exec(
+    await db.exec(`
       CREATE TABLE IF NOT EXISTS crypto_data (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         name TEXT NOT NULL,
@@ -34,7 +34,7 @@ export async function initializeDatabase() {
         category TEXT,
         updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
       )
-    );
+    `);
 
     // Insert initial crypto data if not exists
     const existingCrypto = await db.all('SELECT COUNT(*) as count FROM crypto_data');
