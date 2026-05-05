@@ -52,7 +52,7 @@ function SignIn() {
     }
 
     try {
-      const response = await fetch("/auth/login", {
+      const response = fetch("http://localhost:5000/auth/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
